@@ -40,4 +40,9 @@ public class GreetingController {
     public Greeting addGreeting(@RequestBody Greeting greeting) {
         return greetingServices.addGreeting(greeting);
     }
+
+    @PutMapping("/updateGreeting")
+    public Greeting updateGreeting(@RequestBody Greeting greeting){
+        return greetingServices.updateGreeting(greeting);
+    }
 }
