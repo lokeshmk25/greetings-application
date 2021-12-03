@@ -1,5 +1,7 @@
 package com.bridgelabz.greetingsapplication.controller;
 
+import com.bridgelabz.greetingsapplication.services.GreetingServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 public class GreetingController {
+    @Autowired
+    GreetingServices greetingServices;
 
     @RequestMapping("/greeting")
     public String greet(){
@@ -30,4 +34,8 @@ public class GreetingController {
         return "Hello" +fname+" "+lname;
     }
 
+    @GetMapping("/greetings")
+    public String greetings(){
+        return greetingServices.greeting();
+    }
 }
