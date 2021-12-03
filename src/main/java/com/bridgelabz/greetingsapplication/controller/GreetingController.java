@@ -1,9 +1,6 @@
 package com.bridgelabz.greetingsapplication.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author lokesh
@@ -28,4 +25,9 @@ public class GreetingController {
     public String sayHello(@PathVariable String name){
         return "Hello from " +name;
     }
+    @GetMapping("/getParam")
+    public String greeting(@RequestParam String fname, @RequestParam String lname) {
+        return "Hello" +fname+" "+lname;
+    }
+
 }
