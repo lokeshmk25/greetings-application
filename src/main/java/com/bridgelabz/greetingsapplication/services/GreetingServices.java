@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GreetingServices {
@@ -31,5 +32,13 @@ public class GreetingServices {
 
     public Greeting updateGreeting(Greeting greeting) {
         return greetingRepository.save(greeting);
+    }
+
+    public String deleteGreeting(int id) {
+        Optional<Greeting>byId= greetingRepository.findById(id);
+        if(byId.isPresent()){
+            greetingRepository.delete(byId.get());
+        }
+        return "Deleted sucessfully";
     }
 }
